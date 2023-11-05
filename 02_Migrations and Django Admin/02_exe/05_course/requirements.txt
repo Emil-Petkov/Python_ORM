@@ -4,4 +4,3 @@ psycopg2==2.9.9
 sqlparse==0.4.4
 typing_extensions==4.7.1
 tzdata==2023.3
-
