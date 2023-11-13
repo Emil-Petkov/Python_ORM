@@ -1,7 +1,66 @@
 from django.db import models
 
 
-# Create your models here.
+class ArtworkGallery(models.Model):
+    artist_name = models.CharField(
+        max_length=100,
+    )
+
+    art_name = models.CharField(
+        max_length=100,
+    )
+
+    rating = models.IntegerField()
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+    )
+
+
+class Laptop(models.Model):
+    BRANDS = (
+        ("Asus", "Asus"),
+        ("Acer", "Acer"),
+        ("Apple", "Apple"),
+        ("Lenovo", "Lenovo"),
+        ("Dell", "Dell"),
+    )
+
+    OS = (
+        ("Windows", "Windows"),
+        ("MacOS", "MacOS"),
+        ("Linux", "Linux"),
+        ("Chrome OS", "Chrome OS"),
+    )
+
+    brand = models.CharField(
+        max_length=30,
+        choices=BRANDS,
+    )
+
+    processor = models.CharField(
+        max_length=100,
+    )
+
+    memory = models.PositiveIntegerField(
+        help_text="Memory in GB",
+    )
+
+    storage = models.PositiveIntegerField(
+        help_text="Storage in GB"
+    )
+
+    operation_system = models.CharField(
+        max_length=30,
+        choices=OS,
+    )
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+    )
+
 
 class ChessPlayer(models.Model):
     username = models.CharField(max_length=100, unique=True)
@@ -60,64 +119,3 @@ class Workout(models.Model):
     difficulty = models.CharField(max_length=50)
     calories_burned = models.PositiveIntegerField()
     instructor = models.CharField(max_length=100)
-
-
-class ArtworkGallery(models.Model):
-    artist_name = models.CharField(
-        max_length=100
-    )
-
-    art_name = models.CharField(
-        max_length=100
-    )
-
-    rating = models.IntegerField()
-
-    price = models.DecimalField(
-        max_digits=10,
-        decimal_places=2
-    )
-
-
-class Laptop(models.Model):
-    BRAND_CHOICES = (
-        ('Asus', 'Asus'),
-        ('Acer', 'Acer'),
-        ('Apple', 'Apple'),
-        ('Lenovo', 'Lenovo'),
-        ('Dell', 'Dell')
-    )
-
-    OPERATION_SYSTEM_CHOICES = (
-        ('Windows', 'Windows'),
-        ('MacOS', 'MacOS'),
-        ('Linux', 'Linux'),
-        ('Chrome OS', 'Chrome OS')
-    )
-
-    brand = models.CharField(
-        max_length=30,
-        choices=BRAND_CHOICES
-    )
-
-    processor = models.CharField(
-        max_length=100
-    )
-
-    memory = models.PositiveIntegerField(
-        help_text='Memory in GB'
-    )
-
-    storage = models.PositiveIntegerField(
-        help_text='Storage in GB'
-    )
-
-    operation_system = models.CharField(
-        max_length=30,
-        choices=OPERATION_SYSTEM_CHOICES
-    )
-
-    price = models.DecimalField(
-        max_digits=10,
-        decimal_places=2
-    )
